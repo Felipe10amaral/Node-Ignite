@@ -43,6 +43,34 @@
                   "description": "category Aready Exists"
               }
           } 
+        },
+        "get": {
+            "tags": ["Category"],
+            "summary": "list all categories",
+            "description": "list all categories",
+            "responses": {
+                "200": {
+                    "description": "Succes",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "string",
+                                "items": {
+                                    "types": "object",
+                                    "properties": {
+                                        "name": {
+                                            "type": "string"
+                                        },
+                                        "description": {
+                                            "type":"string"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }  
       }  
     } 
