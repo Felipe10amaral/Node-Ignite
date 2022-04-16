@@ -1,10 +1,10 @@
 import { Request , Response} from "express";
-import { CreateCategoryUseCase } from "../CreateCategory";
+import { CreateSpecificationUseCase } from "../createSpecification/CreateSpecificationUseCase";
 
 
 class CreateSpecificationController {
 
-    constructor(private createSpecificationUseCase: CreateCategoryUseCase){}
+    constructor(private createSpecificationUseCase: CreateSpecificationUseCase){}
 
     handle(request: Request, response: Response): Response {
       const {name, description} = request.body;

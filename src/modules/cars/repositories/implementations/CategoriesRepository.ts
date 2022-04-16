@@ -7,27 +7,25 @@ import { ICategoriesRepository,ICreateRepositoryDTO } from '../ICategoriesReposi
 class CategoriesRepository implements ICategoriesRepository{
     private repository: Repository<Category>;
 
-    private static INSTANCE: CategoriesRepository;
-
-    private constructor(){
+    constructor(){
         this.repository = getRepository(Category);
     }
 
-    public static getInstance(): CategoriesRepository{
-        if(!CategoriesRepository.INSTANCE){
-            CategoriesRepository.INSTANCE = new CategoriesRepository();
-        }
+    // public static getInstance(): CategoriesRepository{
+    //     if(!CategoriesRepository.INSTANCE){
+    //         CategoriesRepository.INSTANCE = new CategoriesRepository();
+    //     }
 
-        return CategoriesRepository.INSTANCE;
-    }
+    //     return CategoriesRepository.INSTANCE;
+    // }
 
     async create({ name, description}: ICreateRepositoryDTO): Promise<void> {
-        const category = this.repository.create({
+        const categories = this.repository.create({
             description,
             name
         })
 
-        await this.repository.save(category);
+        await this.repository.save(categories);
     }
 
     async list(): Promise<Category[]> {
