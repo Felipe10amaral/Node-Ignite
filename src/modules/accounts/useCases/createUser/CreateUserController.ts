@@ -1,6 +1,7 @@
-import {Request, Response} from 'express';
+import { Request, Response } from 'express';
 import { CreateUserUseCase } from './CreateUserUseCase';
 import { container } from 'tsyringe';
+import { hash } from 'bcrypt';
 
 class CreateUserController {
 
@@ -9,10 +10,12 @@ class CreateUserController {
 
         const createUserUseCase = container.resolve(CreateUserUseCase);
 
+        const passwordHash = await hash(password, 8);
+
         await createUserUseCase.execute({
             name,
             email,
-            password,
+            password: passwordHash,
             driver_license
         });
 
