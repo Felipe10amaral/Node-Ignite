@@ -1,6 +1,3 @@
-
-
-
 interface ICreateUsersDTO{
     name: string;
     email: string;
